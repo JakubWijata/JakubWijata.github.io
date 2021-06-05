@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:www/screen/home_screen/home_screen.dart';
 import 'package:www/screen/login_screen/login_screen.dart';
 import 'package:www/screen/my_account._screen/my_account_screen.dart';
+import 'package:www/screen/register_pet_screen.dart/register_pet_screen..dart';
 import 'package:www/screen/register_screen/register_screen.dart';
 
 class Routes {
   static const home = '/Home';
   static const login = '/Login';
   static const register = '/Register';
+  static const petForm = '/PetForm';
 
   static const myAccount = '/MyAccount';
 }
@@ -16,13 +18,15 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routes.home:
       //TODO replece login scren to gomescree
-      return _getPageRoute(MyAccountScreen(), settings);
+      return _getPageRoute(RegisterPetScreen(), settings);
     case Routes.login:
       return _getPageRoute(LoginScreen(), settings);
     case Routes.register:
       return _getPageRoute(RegisterScreen(), settings);
     case Routes.myAccount:
       return _getPageRoute(MyAccountScreen(), settings);
+    case Routes.petForm:
+      return _getPageRoute(RegisterPetScreen(), settings);
     default:
       return _getPageRoute(HomeScreen(), settings);
   }

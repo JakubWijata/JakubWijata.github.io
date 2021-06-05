@@ -237,7 +237,7 @@ class _RegisterFormState extends State<RegisterForm> {
 
     if (tryRegister) {
       //TODO add call to appi register
-      Navigator.of(context).pushNamed(Routes.login);
+      Navigator.of(context).pushNamed(Routes.petForm);
     }
     setState(() {});
   }

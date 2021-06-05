@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:www/routes/route.dart';
-import 'package:www/validator.dart';
 
-class LoginForm extends StatefulWidget {
+class PetForm extends StatefulWidget {
   @override
-  _LoginFormState createState() => _LoginFormState();
+  _PetFormState createState() => _PetFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  String emailError = null;
-  String passwordError = null;
-  bool _checkbox = false;
+class _PetFormState extends State<PetForm> {
+  final imieController = TextEditingController();
+  final rasaController = TextEditingController();
+  final plecController = TextEditingController();
+  final dataController = TextEditingController();
+  final mascController = TextEditingController();
+  final znakiController = TextEditingController();
+  final wagaController = TextEditingController();
+  final uwagiController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class _LoginFormState extends State<LoginForm> {
           child: Column(
             children: [
               Text(
-                'Zaloguj się',
+                'Profil Pupila',
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.w300,
@@ -42,7 +44,7 @@ class _LoginFormState extends State<LoginForm> {
                   Flexible(
                     flex: 1,
                     child: Text(
-                      'Email',
+                      'Imie',
                       style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w300,
@@ -52,9 +54,8 @@ class _LoginFormState extends State<LoginForm> {
                   Flexible(
                     flex: 2,
                     child: TextField(
-                      controller: emailController,
+                      controller: imieController,
                       decoration: InputDecoration(
-                        errorText: emailError,
                         focusColor: Colors.green,
                         fillColor: Colors.green,
                         border: OutlineInputBorder(),
@@ -62,7 +63,7 @@ class _LoginFormState extends State<LoginForm> {
                           borderSide:
                               const BorderSide(color: Colors.grey, width: 2.0),
                         ),
-                        hintText: 'Wprowadz Email',
+                        hintText: 'Wprowadz Imie',
                       ),
                     ),
                   )
@@ -76,7 +77,7 @@ class _LoginFormState extends State<LoginForm> {
                   Flexible(
                     flex: 1,
                     child: Text(
-                      'Hasło',
+                      'Rasa',
                       style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w300,
@@ -86,10 +87,8 @@ class _LoginFormState extends State<LoginForm> {
                   Flexible(
                     flex: 2,
                     child: TextField(
-                      obscureText: true,
-                      controller: passwordController,
+                      controller: rasaController,
                       decoration: InputDecoration(
-                        errorText: passwordError,
                         focusColor: Colors.green,
                         fillColor: Colors.green,
                         border: OutlineInputBorder(),
@@ -97,47 +96,30 @@ class _LoginFormState extends State<LoginForm> {
                           borderSide:
                               const BorderSide(color: Colors.grey, width: 2.0),
                         ),
-                        hintText: 'Wprowadz haslo',
+                        hintText: 'Wprowadz Rase',
                       ),
                     ),
                   )
                 ],
               ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Spacer(),
-                  Flexible(
-                    flex: 2,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Checkbox(
-                          value: _checkbox,
-                          activeColor: Colors.green,
-                          onChanged: (value) {
-                            setState(() {
-                              _checkbox = !_checkbox;
-                            });
-                          },
-                        ),
-                        Text(
-                          'Zapamiętaj mnie',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black54),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+              SizedBox(height: 20),
+              formRow(plecController, "Płeć", "Wprowadź Płeć", 1),
+              SizedBox(height: 20),
+              formRow(dataController, "Data urodzenia",
+                  "Wprowadź Date urodzenia", 1),
+              SizedBox(height: 20),
+              formRow(mascController, "Maść", "Wprowadź Maść", 1),
+              SizedBox(height: 20),
+              formRow(znakiController, "Znaki szczególne",
+                  "Wprowadź Znaki szczególne", 1),
+              SizedBox(height: 20),
+              formRow(wagaController, "Wage", "Wprowadź Wage", 1),
+              SizedBox(height: 20),
+              formRow(uwagiController, "Uwagi", "", 5),
               SizedBox(height: 60),
               Row(
                 children: [
-                  Spacer(flex: 2),
+                  Spacer(flex: 1),
                   Expanded(
                     flex: 2,
                     child: SizedBox(
@@ -154,72 +136,68 @@ class _LoginFormState extends State<LoginForm> {
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                         ),
-                        onPressed: logIn,
-                        child: Text('Zaloguj'),
+                        onPressed: registerPet,
+                        child: Text('Stwórz Profil pupila'),
                       ),
                     ),
                   ),
-                  Spacer(flex: 2),
+                  Spacer(flex: 1),
                 ],
               ),
               SizedBox(height: 20),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Nie masz konta? ',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                        color: Colors.black54),
-                  ),
-                  SizedBox(width: 5),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(Routes.register);
-                    },
-                    child: Text(
-                      'Załóż konto',
-                      style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87),
-                    ),
-                  )
-                ],
-              ),
             ],
           ),
         ));
   }
 
-  Future<void> logIn() async {
-    emailError = null;
-    passwordError = null;
-    bool tryLogin = true;
+  Future<void> registerPet() async {
+    //     final imieController = TextEditingController();
+    // final rasaController = TextEditingController();
+    // final plecController = TextEditingController();
+    // final dataController = TextEditingController();
+    // final mascController = TextEditingController();
+    // final znakiController = TextEditingController();
+    // final wagaController = TextEditingController();
+    // final uwagiController = TextEditingController();
+    //TODO add call to appi registerPet
+    Navigator.of(context).pushNamed(Routes.myAccount);
 
-    print(emailController.text);
-    if (emailController.text.isEmpty) {
-      emailError = "wprowadz email";
-      tryLogin = false;
-    } else if (!Validator.emialIsCorrect(emailController.text)) {
-      emailError = "Niepoprawny email";
-      tryLogin = false;
-    }
-
-    if (passwordController.text.isEmpty) {
-      passwordError = "wprowadz hasło";
-      tryLogin = false;
-    } else if (!Validator.passwordIsCorrect(passwordController.text)) {
-      passwordError = "Niepoprawny hasło";
-      tryLogin = false;
-    }
-
-    if (tryLogin) {
-      //TODO add call to appi LOGin
-      //TODO add redirect to mojekonto
-    }
     setState(() {});
+  }
+
+  Widget formRow(TextEditingController controller, String title,
+      String hintText, int lines) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          flex: 1,
+          child: Text(
+            title,
+            style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w300,
+                color: Colors.black54),
+          ),
+        ),
+        Flexible(
+          flex: 2,
+          child: TextField(
+            maxLines: lines,
+            controller: controller,
+            decoration: InputDecoration(
+              focusColor: Colors.green,
+              fillColor: Colors.green,
+              border: OutlineInputBorder(),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.grey, width: 2.0),
+              ),
+              hintText: hintText,
+            ),
+          ),
+        )
+      ],
+    );
   }
 }
