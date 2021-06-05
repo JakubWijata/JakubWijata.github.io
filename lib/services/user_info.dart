@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class UserInfo extends ChangeNotifier {
-  String _name = "";
-  bool _isLogin = false;
+  String _name = "jakub.wijata@htde,ok";
+  bool _isLogin = true;
   String _token = "";
 
   String get token => _token;

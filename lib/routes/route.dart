@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:www/screen/home_screen/home_screen.dart';
 import 'package:www/screen/login_screen/login_screen.dart';
+import 'package:www/screen/my_account._screen/my_account_screen.dart';
+import 'package:www/screen/register_screen/register_screen.dart';
 
 class Routes {
   static const home = '/Home';
-  static const myAccount = '/Myaccount';
+  static const login = '/Login';
+  static const register = '/Register';
+
+  static const myAccount = '/MyAccount';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routes.home:
-      return _getPageRoute(HomeScreen(), settings);
-    case Routes.myAccount:
+      //TODO replece login scren to gomescree
+      return _getPageRoute(MyAccountScreen(), settings);
+    case Routes.login:
       return _getPageRoute(LoginScreen(), settings);
+    case Routes.register:
+      return _getPageRoute(RegisterScreen(), settings);
+    case Routes.myAccount:
+      return _getPageRoute(MyAccountScreen(), settings);
     default:
       return _getPageRoute(HomeScreen(), settings);
   }

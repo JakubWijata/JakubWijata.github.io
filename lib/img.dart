@@ -4,4 +4,5 @@ class Img {
   static String get howItWork1 => 'img/jak_to_dziala_1.png';
   static String get howItWork2 => 'img/jak_to_dziala_2.png';
   static String get howItWork3 => 'img/jak_to_dziala_3.png';
+  static String get loginCat => 'img/login_cat.png';
 }

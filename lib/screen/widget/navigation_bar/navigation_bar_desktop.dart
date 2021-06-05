@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:www/img.dart';
 import 'package:www/routes/route.dart';
 import 'package:www/screen/widget/navigation_bar/navigation_item/navigation_item.dart';
+import 'package:www/services/user_info.dart';
+import 'package:provider/provider.dart';
 
 class NavigationBarDesktop extends StatelessWidget {
   const NavigationBarDesktop({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final userInfo = context.watch<UserInfo>();
     return Container(
         color: Color.fromRGBO(255, 255, 255, 0.95),
         height: 100,
@@ -35,9 +38,13 @@ class NavigationBarDesktop extends StatelessWidget {
                   NavigationItem(title: 'Kontakt', onTap: () {}),
                   SizedBox(width: 20),
                   NavigationItem(
-                      title: 'Moje konto',
-                      onTap: () =>
-                          Navigator.of(context).pushNamed(Routes.myAccount)),
+                    title: userInfo.isLogin ? userInfo.name : 'Moje konto',
+                    onTap: () => {
+                      userInfo.isLogin
+                          ? Navigator.of(context).pushNamed(Routes.login)
+                          : Navigator.of(context).pushNamed(Routes.myAccount)
+                    },
+                  ),
                   SizedBox(width: 20),
                   Flexible(
                     child: Container(

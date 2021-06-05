@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:www/routes/route.dart';
 import 'package:www/screen/widget/drawer/draver_item.dart';
+import 'package:www/services/user_info.dart';
+import 'package:provider/provider.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final userInfo = context.watch<UserInfo>();
     return Container(
       width: 200,
       decoration: BoxDecoration(
@@ -33,8 +36,12 @@ class NavigationDrawer extends StatelessWidget {
             onTap: () {},
           ),
           DraverItem(
-            title: 'Moje konto',
-            onTap: () => Navigator.of(context).pushNamed(Routes.myAccount),
+            title: userInfo.isLogin ? userInfo.name : 'Moje konto',
+            onTap: () => {
+              userInfo.isLogin
+                  ? Navigator.of(context).pushNamed(Routes.login)
+                  : Navigator.of(context).pushNamed(Routes.myAccount)
+            },
           ),
           DraverItem(
             title: 'Umów wizyte',
