@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:www/screen/home_screen/home_screen.dart';
-import 'package:www/screen/second/second.dart';
+import 'package:www/screen/login_screen/login_screen.dart';
 
 class Routes {
-  static const first = '/Home';
-  static const second = '/second';
+  static const home = '/Home';
+  static const myAccount = '/Myaccount';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
-    case Routes.first:
+    case Routes.home:
       return _getPageRoute(HomeScreen(), settings);
-    case Routes.second:
-      return _getPageRoute(Second(), settings);
+    case Routes.myAccount:
+      return _getPageRoute(LoginScreen(), settings);
     default:
       return _getPageRoute(HomeScreen(), settings);
   }

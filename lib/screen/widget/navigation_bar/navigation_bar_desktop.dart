@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:www/img.dart';
+import 'package:www/routes/route.dart';
 import 'package:www/screen/widget/navigation_bar/navigation_item/navigation_item.dart';
 
 class NavigationBarDesktop extends StatelessWidget {
@@ -32,25 +33,26 @@ class NavigationBarDesktop extends StatelessWidget {
                     width: 20,
                   ),
                   NavigationItem(title: 'Kontakt', onTap: () {}),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  NavigationItem(title: 'Moje konto', onTap: () {}),
-                  SizedBox(
-                    width: 20,
-                  ),
+                  SizedBox(width: 20),
+                  NavigationItem(
+                      title: 'Moje konto',
+                      onTap: () =>
+                          Navigator.of(context).pushNamed(Routes.myAccount)),
+                  SizedBox(width: 20),
                   Flexible(
-                      child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            color: Colors.red,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 8),
-                            child: NavigationItem(
-                                title: 'Umów wizyte', onTap: () {}),
-                          )))
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                        color: Colors.red,
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        child:
+                            NavigationItem(title: 'Umów wizyte', onTap: () {}),
+                      ),
+                    ),
+                  )
                 ],
               ))
             ],

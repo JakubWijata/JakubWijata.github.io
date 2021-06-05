@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:www/routes/route.dart';
 import 'package:www/screen/widget/drawer/draver_item.dart';
 
 class NavigationDrawer extends StatelessWidget {
@@ -23,7 +24,9 @@ class NavigationDrawer extends StatelessWidget {
           Divider(),
           DraverItem(
             title: 'Cennik',
-            onTap: () {},
+            onTap: () {
+              // Navigator.of(context).pushNamed()
+            },
           ),
           DraverItem(
             title: 'Kontakt',
@@ -31,7 +34,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
           DraverItem(
             title: 'Moje konto',
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushNamed(Routes.myAccount),
           ),
           DraverItem(
             title: 'Umów wizyte',

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:www/img.dart';
@@ -159,6 +157,7 @@ class BotPartDesctop extends StatelessWidget {
             child: Image.asset(Img.howItWork3),
           )
         ]),
+        SizedBox(height: 100),
       ],
     );
   }

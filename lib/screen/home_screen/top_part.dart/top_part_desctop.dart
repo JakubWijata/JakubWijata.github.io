@@ -12,6 +12,7 @@ class TopPartDesctop extends StatelessWidget {
           height: 1735,
           child: Image.asset(
             Img.back1,
+            width: double.infinity,
             fit: BoxFit.fill,
           ),
         ),
