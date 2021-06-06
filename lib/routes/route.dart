@@ -18,7 +18,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case Routes.home:
       //TODO replece login scren to gomescree
-      return _getPageRoute(MyAccountScreen(), settings);
+      return _getPageRoute(HomeScreen(), settings);
     case Routes.login:
       return _getPageRoute(LoginScreen(), settings);
     case Routes.register:

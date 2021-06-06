@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:www/routes/route.dart';
 import 'package:www/validator.dart';
@@ -149,9 +150,6 @@ class _RegisterFormState extends State<RegisterForm> {
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          textStyle: TextStyle(
-                            fontSize: 30,
-                          ),
                           primary: Colors.green,
                           padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 20),
@@ -160,7 +158,11 @@ class _RegisterFormState extends State<RegisterForm> {
                           ),
                         ),
                         onPressed: register,
-                        child: Text('Zarejestruj się'),
+                        child: AutoSizeText(
+                          'Zarejestruj się',
+                          style: TextStyle(fontSize: 30),
+                          maxLines: 1,
+                        ),
                       ),
                     ),
                   ),

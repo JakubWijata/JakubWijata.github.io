@@ -41,8 +41,8 @@ class NavigationBarDesktop extends StatelessWidget {
                     title: userInfo.isLogin ? userInfo.name : 'Moje konto',
                     onTap: () => {
                       userInfo.isLogin
-                          ? Navigator.of(context).pushNamed(Routes.login)
-                          : Navigator.of(context).pushNamed(Routes.myAccount)
+                          ? Navigator.of(context).pushNamed(Routes.myAccount)
+                          : Navigator.of(context).pushNamed(Routes.login)
                     },
                   ),
                   SizedBox(width: 20),

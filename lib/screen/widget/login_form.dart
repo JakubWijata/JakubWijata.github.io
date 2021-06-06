@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:www/routes/route.dart';
 import 'package:www/validator.dart';
@@ -144,9 +145,6 @@ class _LoginFormState extends State<LoginForm> {
                       width: double.infinity,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          textStyle: TextStyle(
-                            fontSize: 30,
-                          ),
                           primary: Colors.green,
                           padding: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 20),
@@ -155,7 +153,12 @@ class _LoginFormState extends State<LoginForm> {
                           ),
                         ),
                         onPressed: logIn,
-                        child: Text('Zaloguj'),
+                        child: AutoSizeText(
+                          'Zaloguj',
+                          maxFontSize: 30,
+                          style: TextStyle(fontSize: 30),
+                          maxLines: 1,
+                        ),
                       ),
                     ),
                   ),
