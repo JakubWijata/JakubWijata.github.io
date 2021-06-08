@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:www/screen/home_screen/home_screen.dart';
 import 'package:www/screen/login_screen/login_screen.dart';
 import 'package:www/screen/my_account._screen/my_account_screen.dart';
+import 'package:www/screen/pet_details/pet_detail_list.dart';
+import 'package:www/screen/pet_details/pet_details_screen.dart';
 import 'package:www/screen/register_pet_screen.dart/register_pet_screen..dart';
 import 'package:www/screen/register_screen/register_screen.dart';
 
@@ -11,6 +13,7 @@ class Routes {
   static const register = '/Register';
   static const petForm = '/PetForm';
 
+  static const pet = '/Pet';
   static const myAccount = '/MyAccount';
 }
 
@@ -27,6 +30,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(MyAccountScreen(), settings);
     case Routes.petForm:
       return _getPageRoute(RegisterPetScreen(), settings);
+    case Routes.pet:
+      return _getPageRoute(PetDetailsScreen(), settings);
     default:
       return _getPageRoute(HomeScreen(), settings);
   }

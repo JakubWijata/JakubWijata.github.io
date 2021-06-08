@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:www/img.dart';
+import 'package:www/models/pet.dart';
+import 'package:www/routes/route.dart';
 import 'package:www/services/user_info.dart';
 import 'package:provider/provider.dart';
 
@@ -15,24 +17,18 @@ class _ListWidgetState extends State<ListWidget> {
   String wizytaTermin = "25.01.2021 14:50";
 
   @override
-  void initState() {
-    _downloadInfo();
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final userInfo = context.watch<UserInfo>();
     return Column(
       children: [
-        dogCard(),
+        dogCard(userInfo.pet),
         calendarCard(),
         profileCard(userInfo.user.email),
       ],
     );
   }
 
-  Widget dogCard() {
+  Widget dogCard(Pet pet) {
     return Card(
       color: Color(0xF0FFFFFF),
       shape: RoundedRectangleBorder(
@@ -55,7 +51,7 @@ class _ListWidgetState extends State<ListWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${dogName}",
+                  "${pet.name ??= ''}",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.black,
@@ -63,7 +59,7 @@ class _ListWidgetState extends State<ListWidget> {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "Rasa: ${rasa}",
+                  "Rasa: ${pet.breed ??= ''}",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.black,
@@ -71,7 +67,7 @@ class _ListWidgetState extends State<ListWidget> {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "Wiek: ${wiek} lat",
+                  "Data urodzenia: ${pet.date_of_birth?.toString()?.split("T")[0] ??= ''}",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.black,
@@ -89,7 +85,9 @@ class _ListWidgetState extends State<ListWidget> {
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(Routes.pet);
+                  },
                   child: Text('szczegóły'),
                 ),
               ],
@@ -180,9 +178,5 @@ class _ListWidgetState extends State<ListWidget> {
         ),
       ),
     );
-  }
-
-  void _downloadInfo() {
-    setState(() {});
   }
 }

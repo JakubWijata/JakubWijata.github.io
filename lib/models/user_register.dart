@@ -12,7 +12,6 @@ class UserRegister {
       @required this.passwordConfirm,
       @required this.firstName,
       @required this.lastName,
-      @required this.professions,
       @required this.accountType});
 
   @JsonKey(name: 'first_name')
@@ -27,8 +26,6 @@ class UserRegister {
   String passwordConfirm;
   @JsonKey(name: 'account_type')
   String accountType;
-  @JsonKey(name: 'professions')
-  List<String> professions;
 
   factory UserRegister.fromJson(Map<String, dynamic> json) =>
       _$UserRegisterFromJson(json);

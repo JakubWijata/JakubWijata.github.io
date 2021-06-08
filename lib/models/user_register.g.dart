@@ -13,8 +13,6 @@ UserRegister _$UserRegisterFromJson(Map<String, dynamic> json) {
     passwordConfirm: json['password_confirmation'] as String,
     firstName: json['first_name'] as String,
     lastName: json['last_name'] as String,
-    professions:
-        (json['professions'] as List)?.map((e) => e as String)?.toList(),
     accountType: json['account_type'] as String,
   );
 }
@@ -27,5 +25,4 @@ Map<String, dynamic> _$UserRegisterToJson(UserRegister instance) =>
       'password': instance.password,
       'password_confirmation': instance.passwordConfirm,
       'account_type': instance.accountType,
-      'professions': instance.professions,
     };

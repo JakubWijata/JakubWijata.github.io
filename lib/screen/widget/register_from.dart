@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:www/api.dart';
+import 'package:www/models/user_register.dart';
 import 'package:www/routes/route.dart';
 import 'package:www/validator.dart';
 
@@ -12,6 +14,8 @@ class _RegisterFormState extends State<RegisterForm> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordRepController = TextEditingController();
+  final nameController = TextEditingController();
+  final lastNameController = TextEditingController();
   String emailError = null;
   String passwordError = null;
   String passwordRepError = null;
@@ -65,6 +69,72 @@ class _RegisterFormState extends State<RegisterForm> {
                               const BorderSide(color: Colors.grey, width: 2.0),
                         ),
                         hintText: 'Wprowadz Email',
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(height: 20),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: Text(
+                      'Imie',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black54),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    child: TextField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                        focusColor: Colors.green,
+                        fillColor: Colors.green,
+                        border: OutlineInputBorder(),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.grey, width: 2.0),
+                        ),
+                        hintText: 'Wprowadz imie',
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(height: 20),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: Text(
+                      'Nazwisko',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w300,
+                          color: Colors.black54),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 2,
+                    child: TextField(
+                      controller: lastNameController,
+                      decoration: InputDecoration(
+                        focusColor: Colors.green,
+                        fillColor: Colors.green,
+                        border: OutlineInputBorder(),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.grey, width: 2.0),
+                        ),
+                        hintText: 'Wprowadz Nazwisko',
                       ),
                     ),
                   )
@@ -238,8 +308,16 @@ class _RegisterFormState extends State<RegisterForm> {
     }
 
     if (tryRegister) {
-      //TODO add call to appi register
-      Navigator.of(context).pushNamed(Routes.petForm);
+      bool user = await ApiProvider().register(
+          UserRegister(
+              password: passwordController.text,
+              passwordConfirm: passwordRepController.text,
+              email: emailController.text,
+              firstName: nameController.text,
+              lastName: lastNameController.text,
+              accountType: "patient"),
+          context);
+      if (user) Navigator.of(context).pushNamed(Routes.petForm);
     }
     setState(() {});
   }

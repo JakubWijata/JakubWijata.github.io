@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:www/api.dart';
+import 'package:www/models/pet.dart';
 import 'package:www/routes/route.dart';
 
 class PetForm extends StatefulWidget {
@@ -153,16 +155,17 @@ class _PetFormState extends State<PetForm> {
   }
 
   Future<void> registerPet() async {
-    //     final imieController = TextEditingController();
-    // final rasaController = TextEditingController();
-    // final plecController = TextEditingController();
-    // final dataController = TextEditingController();
-    // final mascController = TextEditingController();
-    // final znakiController = TextEditingController();
-    // final wagaController = TextEditingController();
-    // final uwagiController = TextEditingController();
-    //TODO add call to appi registerPet
-    Navigator.of(context).pushNamed(Routes.myAccount);
+    bool succes = await ApiProvider().registerPet(
+        Pet(
+            breed: rasaController.text,
+            date_of_birth: dataController.text,
+            name: imieController.text,
+            description: uwagiController.text,
+            marks: znakiController.text,
+            sex: plecController.text,
+            weight: wagaController.text),
+        context);
+    if (succes) Navigator.of(context).pushNamed(Routes.myAccount);
 
     setState(() {});
   }
