@@ -36,7 +36,7 @@ class NavigationDrawer extends StatelessWidget {
             onTap: () {},
           ),
           DraverItem(
-            title: userInfo.isLogin ? userInfo.name : 'Moje konto',
+            title: userInfo.isLogin ? userInfo.user.name : 'Moje konto',
             onTap: () => {
               userInfo.isLogin
                   ? Navigator.of(context).pushNamed(Routes.myAccount)

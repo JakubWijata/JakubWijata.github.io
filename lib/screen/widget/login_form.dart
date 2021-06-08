@@ -1,5 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:www/api.dart';
+import 'package:www/models/user.dart';
+import 'package:www/models/user_login.dart';
 import 'package:www/routes/route.dart';
 import 'package:www/validator.dart';
 
@@ -220,8 +223,13 @@ class _LoginFormState extends State<LoginForm> {
     }
 
     if (tryLogin) {
-      //TODO add call to appi LOGin
-      //TODO add redirect to mojekonto
+      User user = await ApiProvider().login(
+          UserLogin(
+              email: emailController.text, password: passwordController.text),
+          context);
+      if (user != null) {
+        Navigator.of(context).pushReplacementNamed(Routes.myAccount);
+      }
     }
     setState(() {});
   }

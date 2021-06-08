@@ -27,7 +27,7 @@ class _ListWidgetState extends State<ListWidget> {
       children: [
         dogCard(),
         calendarCard(),
-        profileCard(userInfo.name),
+        profileCard(userInfo.user.email),
       ],
     );
   }

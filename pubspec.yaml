@@ -34,7 +34,9 @@ dependencies:
   circular_profile_avatar: ^2.0.0
   flutter_svg: ^0.22.0
   auto_size_text: ^2.1.0
-
+  json_serializable: ^3.5.0
+  build_runner: ^1.0.0
+  fluttertoast: ^7.1.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

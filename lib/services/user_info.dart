@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:www/models/user.dart';
 
 class UserInfo extends ChangeNotifier {
-  String _name = "jakub.wijata@htde,ok";
   bool _isLogin = false;
   String _token = "";
+  User _user;
 
   String get token => _token;
-  String get name => _name;
+  User get user => _user;
   bool get isLogin => _isLogin;
 
-  set name(String name) {
-    _name = name;
+  set user(User user) {
+    _user = user;
     notifyListeners();
   }
 
