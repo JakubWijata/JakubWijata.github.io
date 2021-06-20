@@ -22,7 +22,9 @@ class _ListWidgetState extends State<ListWidget> {
     return Column(
       children: [
         dogCard(userInfo.pet),
-        calendarCard(),
+        calendarCard(userInfo.appointmentsIsEmpty
+            ? 'Brak nadchodzących wizyt'
+            : userInfo.closelyAppointmentsDate),
         profileCard(userInfo.user.email),
       ],
     );
@@ -67,7 +69,7 @@ class _ListWidgetState extends State<ListWidget> {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "Data urodzenia: ${pet.date_of_birth?.toString()?.split("T")[0] ??= ''}",
+                  "Data urodzenia: ${pet.date_of_birth != null ? pet.date_of_birth.toString()?.split("T")[0] : ''}",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.black,
@@ -98,7 +100,7 @@ class _ListWidgetState extends State<ListWidget> {
     );
   }
 
-  Widget calendarCard() {
+  Widget calendarCard(String text) {
     return Card(
       color: Color(0xF0FFFFFF),
       shape: RoundedRectangleBorder(
@@ -129,7 +131,7 @@ class _ListWidgetState extends State<ListWidget> {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "${wizytaTermin}",
+                  "${text}",
                   style: TextStyle(
                       fontSize: 25,
                       color: Colors.black,

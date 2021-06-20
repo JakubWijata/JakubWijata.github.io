@@ -9,5 +9,7 @@ void showToast(String msg, Color backgroundColor, Color textColor) {
       timeInSecForIosWeb: 1,
       backgroundColor: backgroundColor,
       textColor: textColor,
+      webBgColor: "white",
+      webShowClose: true,
       fontSize: 16.0);
 }

@@ -55,8 +55,15 @@ class NavigationBarDesktop extends StatelessWidget {
                       child: Padding(
                         padding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                        child:
-                            NavigationItem(title: 'Umów wizyte', onTap: () {}),
+                        child: NavigationItem(
+                            title: 'Umów wizyte',
+                            onTap: () => {
+                                  userInfo.isLogin
+                                      ? Navigator.of(context)
+                                          .pushNamed(Routes.newAppointment)
+                                      : Navigator.of(context)
+                                          .pushNamed(Routes.login)
+                                }),
                       ),
                     ),
                   )

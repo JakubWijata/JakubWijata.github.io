@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:www/screen/create_appointment/new_appointment_scree.dart';
 import 'package:www/screen/home_screen/home_screen.dart';
 import 'package:www/screen/login_screen/login_screen.dart';
 import 'package:www/screen/my_account._screen/my_account_screen.dart';
@@ -15,6 +16,7 @@ class Routes {
 
   static const pet = '/Pet';
   static const myAccount = '/MyAccount';
+  static const newAppointment = '/newAppointment';
 }
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -22,6 +24,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case Routes.home:
       //TODO replece login scren to gomescree
       return _getPageRoute(HomeScreen(), settings);
+    // return _getPageRoute(NewAppointmentScreen(), settings);
     case Routes.login:
       return _getPageRoute(LoginScreen(), settings);
     case Routes.register:
@@ -32,6 +35,8 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(RegisterPetScreen(), settings);
     case Routes.pet:
       return _getPageRoute(PetDetailsScreen(), settings);
+    case Routes.newAppointment:
+      return _getPageRoute(NewAppointmentScreen(), settings);
     default:
       return _getPageRoute(HomeScreen(), settings);
   }

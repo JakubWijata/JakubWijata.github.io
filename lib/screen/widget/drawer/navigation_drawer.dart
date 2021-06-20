@@ -45,7 +45,11 @@ class NavigationDrawer extends StatelessWidget {
           ),
           DraverItem(
             title: 'Umów wizyte',
-            onTap: () {},
+            onTap: () => {
+              userInfo.isLogin
+                  ? Navigator.of(context).pushNamed(Routes.newAppointment)
+                  : Navigator.of(context).pushNamed(Routes.login)
+            },
           ),
         ],
       ),
